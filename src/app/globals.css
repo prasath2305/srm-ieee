@@ -12,7 +12,6 @@ html, body {
   background-attachment: fixed;
 }
 
-/* Custom animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -41,7 +40,6 @@ html, body {
   animation: float 6s ease-in-out infinite;
 }
 
-/* Custom gradient text */
 .gradient-text {
   background: linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #ec4899 100%);
   -webkit-background-clip: text;
@@ -49,7 +47,6 @@ html, body {
   background-clip: text;
 }
 
-/* Glass morphism effect */
 .glass-card {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);

@@ -1,8 +1,9 @@
 'use client';
 
 import Link from "next/link";
-import { GraduationCap, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
+import logo from "../../../public/srm.png";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -21,7 +22,6 @@ export default function Navbar() {
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/schedule", label: "Schedule" },
-    { href: "/register", label: "Register" },
     { href: "/admin", label: "Admin" }
   ];
 
@@ -38,30 +38,39 @@ export default function Navbar() {
             href="/" 
             className="flex items-center gap-2 group flex-shrink-0"
           >
-            <div className={`w-7 h-7 md:w-8 md:h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center shadow-lg transition-all duration-300 ${
+            <div className={`w-18 h-18 md:w-28 md:h-28 flex items-center justify-center transition-all duration-300 ${
               isScrolled ? 'group-hover:scale-110' : 'group-hover:scale-105'
             }`}>
-              <GraduationCap className="w-4 h-4 md:w-5 md:h-5 text-white" />
+              <img 
+                src={logo.src} 
+                alt="SRM Logo" 
+                className="w-full h-full object-contain"
+              />
             </div>
-            <span className={`font-bold tracking-tight bg-gradient-to-r from-slate-800 to-slate-900 bg-clip-text text-transparent transition-all duration-300 ${
-              isScrolled ? 'text-sm md:text-lg group-hover:from-blue-700 group-hover:to-purple-700' : 'text-sm md:text-lg group-hover:from-blue-600 group-hover:to-purple-600'
+            <span className="p-1">
+                x
+            </span>
+            <span className={`text-xl md:text-2xl font-bold tracking-tight bg-gradient-to-r from-slate-800 to-slate-900 bg-clip-text text-transparent transition-all duration-300 ${
+              isScrolled ? ' group-hover:from-blue-700 group-hover:to-purple-700' : ' group-hover:from-blue-600 group-hover:to-purple-600'
             }`}>
               Research Summit 2025
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6 lg:gap-8 text-sm">
-            {navigationItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="relative text-slate-700 font-medium hover:text-blue-600 transition-colors duration-300 group/nav"
-              >
-                {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 group-hover/nav:w-full transition-all duration-300 rounded-full"></span>
-              </Link>
-            ))}
+          {/* Desktop Navigation - Centered */}
+          <div className="hidden md:flex flex-grow justify-center">
+            <div className="flex items-center gap-6 lg:gap-8 text-sm">
+              {navigationItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="relative text-slate-700 font-medium hover:text-blue-600 transition-colors duration-300 group/nav"
+                >
+                  {item.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 group-hover/nav:w-full transition-all duration-300 rounded-full"></span>
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* Desktop CTA Button */}
