@@ -30,7 +30,7 @@ export default function Footer() {
               </p>
               
               {/* Social Links */}
-              <div className="flex gap-3 mt-6">
+              {/* <div className="flex gap-3 mt-6">
                 {[
                   { name: 'LinkedIn', href: '#', icon: '💼' },
                   { name: 'Twitter', href: '#', icon: '🐦' },
@@ -46,7 +46,7 @@ export default function Footer() {
                     <span className="text-sm">{social.icon}</span>
                   </a>
                 ))}
-              </div>
+              </div> */}
             </div>
 
             {/* Quick Links */}
@@ -57,7 +57,7 @@ export default function Footer() {
                   { href: "/", label: "Home" },
                   { href: "/about", label: "About Summit" },
                   { href: "/schedule", label: "Event Schedule" },
-                  { href: "/speakers", label: "Speakers" },
+                  // { href: "/speakers", label: "Speakers" },
                   { href: "/register", label: "Register Now" }
                 ].map((item) => (
                   <Link
@@ -100,7 +100,7 @@ export default function Footer() {
                     href="tel:+911234567890" 
                     className="text-slate-600 text-sm hover:text-blue-600 transition-colors"
                   >
-                    +91 12345 67890
+                    +91 9551473145
                   </a>
                 </div>
               </div>
@@ -126,7 +126,7 @@ export default function Footer() {
               </div>
               
               {/* Legal Links */}
-              <div className="flex items-center gap-6 text-sm">
+              {/* <div className="flex items-center gap-6 text-sm">
                 <a href="/privacy" className="text-slate-500 hover:text-blue-600 transition-colors">
                   Privacy Policy
                 </a>
@@ -136,7 +136,7 @@ export default function Footer() {
                 <a href="/code-of-conduct" className="text-slate-500 hover:text-blue-600 transition-colors">
                   Code of Conduct
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

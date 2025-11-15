@@ -51,7 +51,7 @@ export default function Home() {
         <header className="text-center max-w-4xl mx-auto mb-20 relative z-10">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-6 border border-blue-200">
             <Zap className="w-4 h-4" />
-            December 8-9, 2025 • SRMIST Kattankulathur
+            December 11-12, 2025 • SRMIST Kattankulathur
           </div>
           
           <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">

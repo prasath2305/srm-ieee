@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import ClickSpark from "./components/Clickspark";
 
 export const metadata = {
-  title: "Two-Day Research Summit SRMIST-IEEE 2025",
+  title: "Research Summit SRMIST-IEEE 2025",
   description: "Frontiers in Technology for Sustainable & Inclusive Development",
 };
 
