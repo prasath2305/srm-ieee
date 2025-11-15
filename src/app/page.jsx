@@ -20,7 +20,9 @@ import {
   Presentation,
   ExternalLink,
   Award,
-  Building2
+  Building2,
+  GamepadIcon,
+  MessageCircle
 } from "lucide-react";
 import ClickSpark from "./components/Clickspark";
 
@@ -37,12 +39,12 @@ export default function Home() {
         
         {/* Enhanced Background with Better Z-index */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-50/20 via-white to-purple-50/20 z-0"></div>
-          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-200 rounded-full blur-3xl opacity-10 -translate-y-48 translate-x-48 z-0"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-green-50/20 via-white to-purple-50/20 z-0"></div>
+          <div className="absolute top-0 right-0 w-96 h-96 bg-green-200 rounded-full blur-3xl opacity-10 -translate-y-48 translate-x-48 z-0"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-200 rounded-full blur-3xl opacity-10 translate-y-48 -translate-x-48 z-0"></div>
           
           {/* Floating elements */}
-          <div className="absolute top-1/4 left-1/6 w-3 h-3 bg-blue-500 rounded-full opacity-10 animate-float z-0"></div>
+          <div className="absolute top-1/4 left-1/6 w-3 h-3 bg-green-500 rounded-full opacity-10 animate-float z-0"></div>
           <div className="absolute top-1/3 right-1/4 w-2 h-2 bg-purple-500 rounded-full opacity-15 animate-float z-0" style={{animationDelay: '1.5s'}}></div>
           <div className="absolute bottom-1/4 left-1/3 w-4 h-4 bg-amber-500 rounded-full opacity-10 animate-float z-0" style={{animationDelay: '2.5s'}}></div>
         </div>
@@ -71,7 +73,7 @@ export default function Home() {
               </p>
               <p className="text-slate-700 text-lg">
                 Organized by SRM Institute of Science & Technology in collaboration with{" "}
-                <span className="font-semibold text-blue-700">IEEE Student Branch & IEEE Chapter</span>
+                <span className="font-semibold text-green-700">IEEE Student Branch & IEEE Chapter</span>
               </p>
             </div>
           </div>
@@ -79,7 +81,7 @@ export default function Home() {
           {/* Location Badge */}
           <div className="flex items-center justify-center gap-2 mb-8">
             <div className="flex items-center gap-2 px-4 py-3 bg-white/80 backdrop-blur-sm rounded-xl border border-slate-200/60 shadow-sm">
-              <MapPin className="w-5 h-5 text-blue-600" />
+              <MapPin className="w-5 h-5 text-green-600" />
               <span className="font-semibold text-slate-800">SRMIST Kattankulathur Campus</span>
             </div>
           </div>
@@ -96,7 +98,7 @@ export default function Home() {
             </Link>
             <Link 
               href="/about" 
-              className="px-8 py-4 bg-white/80 backdrop-blur-sm border-2 border-slate-300/60 text-slate-800 rounded-xl font-semibold hover:border-blue-400/60 hover:text-blue-700 transition-all duration-300 shadow-sm hover:shadow-md"
+              className="px-8 py-4 bg-white/80 backdrop-blur-sm border-2 border-slate-300/60 text-slate-800 rounded-xl font-semibold hover:border-green-400/60 hover:text-green-700 transition-all duration-300 shadow-sm hover:shadow-md"
             >
               Learn More
             </Link>
@@ -111,7 +113,7 @@ export default function Home() {
           <div className="relative flex justify-center">
             <div className="px-6 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-slate-200/60 shadow-sm">
               <span className="text-slate-800 font-semibold flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-blue-500" />
+                <Sparkles className="w-4 h-4 text-green-500" />
                 Event Highlights
               </span>
             </div>
@@ -131,9 +133,9 @@ export default function Home() {
             {[
               {
                 icon: Calendar,
-                gradient: "from-blue-500 to-cyan-500",
-                title: "December 8-9, 2025",
-                description: "Two full days of research excellence and innovation"
+                gradient: "from-green-500 to-emerald-500",
+                title: "December 11-12, 2025",
+                description: "Two full days of innovation and sustainable development focus"
               },
               {
                 icon: Users,
@@ -145,13 +147,13 @@ export default function Home() {
                 icon: Award,
                 gradient: "from-amber-500 to-orange-500",
                 title: "Multiple Tracks",
-                description: "Seminars, Workshops & Competitions"
+                description: "Workshops, Technical Talks & Competitions"
               }
             ].map((item, index) => (
               <div key={index} className="relative group">
                 {/* Connecting line */}
                 {index < 2 && (
-                  <div className="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-gradient-to-r from-slate-200 to-slate-100 group-hover:from-blue-200 group-hover:to-purple-200 transition-colors z-0"></div>
+                  <div className="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-gradient-to-r from-slate-200 to-slate-100 group-hover:from-green-200 group-hover:to-purple-200 transition-colors z-0"></div>
                 )}
                 
                 <div className="relative text-center p-8 bg-white/70 backdrop-blur-sm rounded-3xl border border-white/50 shadow-sm hover:shadow-md transition-all duration-300 z-10">
@@ -171,12 +173,15 @@ export default function Home() {
         <section className="max-w-7xl mx-auto relative z-10 mb-20">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { title: "Seminar Sessions", icon: Mic, description: "Expert-led technical sessions and knowledge sharing", color: "from-blue-500 to-cyan-500" },
-              { title: "Research Stars", icon: Star, description: "Spotlight on emerging researchers and innovators", color: "from-amber-500 to-orange-500" },
-              { title: "Poster Competition", icon: Presentation, description: "Theme-based research presentations", color: "from-emerald-500 to-green-500" },
-              { title: "IEEE Panel Discussion", icon: Users, description: "Industry and academic expert insights", color: "from-violet-500 to-purple-500" },
-              { title: "Hands-on Workshops", icon: Wrench, description: "Practical skill-building sessions", color: "from-orange-500 to-red-500" },
-              { title: "Project Expo", icon: Lightbulb, description: "Showcase of groundbreaking innovations", color: "from-cyan-500 to-blue-500" }
+              { title: "Gaming & Ice Breaking", icon: GamepadIcon, description: "SDG-based interactive ice breaking sessions", color: "from-green-500 to-emerald-500" },
+              { title: "Climate Change Workshop", icon: Wrench, description: "Hands-on workshop on climate change & SDG", color: "from-blue-500 to-cyan-500" },
+              { title: "Innovative Project Expo", icon: Lightbulb, description: "Showcase by school students", color: "from-amber-500 to-orange-500" },
+              { title: "Renewable Energy Talk", icon: Mic, description: "Technical talk on renewable power energy", color: "from-emerald-500 to-green-500" },
+              { title: "Data AI Workshop", icon: Wrench, description: "Technical workshop on data oriented AI", color: "from-violet-500 to-purple-500" },
+              { title: "Research Stars Competition", icon: Star, description: "UG/PG/Research Scholars competition", color: "from-pink-500 to-rose-500" },
+              { title: "Poster Competition", icon: Presentation, description: "Theme-based research presentations", color: "from-cyan-500 to-blue-500" },
+              { title: "Panel Discussion", icon: Users, description: "Expert panel discussion and insights", color: "from-orange-500 to-red-500" },
+              { title: "Webinar Sessions", icon: MessageCircle, description: "Online webinar sessions", color: "from-purple-500 to-indigo-500" }
             ].map((item, index) => (
               <div
                 key={item.title}
@@ -206,39 +211,39 @@ export default function Home() {
             {/* Day 1 */}
             <div className="relative group">
               <div className="rounded-2xl border border-white/50 bg-white/70 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 h-full overflow-hidden">
-                <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-6 relative overflow-hidden">
+                <div className="bg-gradient-to-r from-green-500 to-emerald-600 p-6 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full -translate-y-10 translate-x-10"></div>
                   <div className="flex items-center gap-3 text-white relative z-10">
                     <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
-                    <h3 className="font-bold text-xl">Day 1 — December 8, 2025</h3>
+                    <h3 className="font-bold text-xl">Day 1 — December 11, 2025</h3>
                   </div>
                 </div>
                 
                 <div className="p-6">
-                  <div className="mb-6 rounded-xl overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100/80 h-32 flex items-center justify-center border border-blue-200/60">
-                    <div className="text-center text-blue-700">
-                      <BookOpen className="w-8 h-8 mx-auto mb-2" />
-                      <p className="text-sm font-bold">Day 1 Schedule</p>
+                  <div className="mb-6 rounded-xl overflow-hidden bg-gradient-to-br from-green-50 to-emerald-100/80 h-32 flex items-center justify-center border border-green-200/60">
+                    <div className="text-center text-green-700">
+                      <GamepadIcon className="w-8 h-8 mx-auto mb-2" />
+                      <p className="text-sm font-bold">SDG Focus Day</p>
                     </div>
                   </div>
                   
                   <ul className="text-slate-800 space-y-4">
-                    <li className="flex items-start gap-3 p-3 rounded-lg bg-blue-50/50 border border-blue-100/60">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <li className="flex items-start gap-3 p-3 rounded-lg bg-green-50/50 border border-green-100/60">
+                      <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
                       <div>
-                        <span className="font-bold text-slate-900">Discussion Round with IEEE Panel</span>
-                        <p className="text-sm text-slate-700 mt-1 font-medium">Interactive session with industry experts</p>
+                        <span className="font-bold text-slate-900">Gaming / Ice Breaking Session</span>
+                        <p className="text-sm text-slate-700 mt-1 font-medium">Based on Sustainable Development Goals</p>
                       </div>
                     </li>
-                    <li className="flex items-start gap-3 p-3 rounded-lg bg-blue-50/30 border border-blue-100/40">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <li className="flex items-start gap-3 p-3 rounded-lg bg-green-50/30 border border-green-100/40">
+                      <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
                       <div>
-                        <span className="font-bold text-slate-900">Seminar Sessions</span>
-                        <p className="text-sm text-slate-700 mt-1 font-medium">Technical talks and knowledge sharing</p>
+                        <span className="font-bold text-slate-900">Workshop on Climate Change & SDG</span>
+                        <p className="text-sm text-slate-700 mt-1 font-medium">Hands-on workshop sessions</p>
                       </div>
                     </li>
-                    <li className="flex items-start gap-3 p-3 rounded-lg bg-blue-50/30 border border-blue-100/40">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <li className="flex items-start gap-3 p-3 rounded-lg bg-green-50/30 border border-green-100/40">
+                      <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
                       <div>
                         <span className="font-bold text-slate-900">Innovative Project Expo</span>
                         <p className="text-sm text-slate-700 mt-1 font-medium">Showcase by school students</p>
@@ -256,7 +261,7 @@ export default function Home() {
                   <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full -translate-y-10 translate-x-10"></div>
                   <div className="flex items-center gap-3 text-white relative z-10">
                     <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
-                    <h3 className="font-bold text-xl">Day 2 — December 9, 2025</h3>
+                    <h3 className="font-bold text-xl">Day 2 — December 12, 2025</h3>
                   </div>
                 </div>
                 
@@ -264,7 +269,7 @@ export default function Home() {
                   <div className="mb-6 rounded-xl overflow-hidden bg-gradient-to-br from-purple-50 to-purple-100/80 h-32 flex items-center justify-center border border-purple-200/60">
                     <div className="text-center text-purple-700">
                       <Trophy className="w-8 h-8 mx-auto mb-2" />
-                      <p className="text-sm font-bold">Day 2 Schedule</p>
+                      <p className="text-sm font-bold">Technical & Competition Day</p>
                     </div>
                   </div>
                   
@@ -272,15 +277,29 @@ export default function Home() {
                     <li className="flex items-start gap-3 p-3 rounded-lg bg-purple-50/50 border border-purple-100/60">
                       <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
                       <div>
-                        <span className="font-bold text-slate-900">Identifying Research Stars</span>
-                        <p className="text-sm text-slate-700 mt-1 font-medium">UG / PG / Research Scholars competition</p>
+                        <span className="font-bold text-slate-900">Technical Talk - Renewable Energy</span>
+                        <p className="text-sm text-slate-700 mt-1 font-medium">Expert talk on renewable power energy</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-3 p-3 rounded-lg bg-purple-50/30 border border-purple-100/40">
                       <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
                       <div>
-                        <span className="font-bold text-slate-900">Theme-Based Poster Competition</span>
-                        <p className="text-sm text-slate-700 mt-1 font-medium">Research presentation and evaluation</p>
+                        <span className="font-bold text-slate-900">Technical Workshop - Data AI</span>
+                        <p className="text-sm text-slate-700 mt-1 font-medium">Hands-on data oriented AI workshop</p>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3 p-3 rounded-lg bg-purple-50/30 border border-purple-100/40">
+                      <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                      <div>
+                        <span className="font-bold text-slate-900">Identifying Research Stars</span>
+                        <p className="text-sm text-slate-700 mt-1 font-medium">UG/PG/Research Scholars competition</p>
+                      </div>
+                    </li>
+                    <li className="flex items-start gap-3 p-3 rounded-lg bg-purple-50/30 border border-purple-100/40">
+                      <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
+                      <div>
+                        <span className="font-bold text-slate-900">Poster Competition & Panel Discussion</span>
+                        <p className="text-sm text-slate-700 mt-1 font-medium">Research presentation and expert panel</p>
                       </div>
                     </li>
                   </ul>
@@ -298,7 +317,7 @@ export default function Home() {
                 <Clock className="w-5 h-5 text-white animate-pulse" />
                 <p className="text-white font-bold text-lg">Limited Seats • First-Come-First-Serve</p>
               </div>
-              <p className="text-blue-100 mb-8 text-lg font-medium">
+              <p className="text-green-100 mb-8 text-lg font-medium">
                 Max 250 participants. Secure your slot early.
               </p>
               
