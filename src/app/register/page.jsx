@@ -43,34 +43,34 @@ export default function Register() {
 
     const form = new FormData(e.currentTarget);
     const participation = form.getAll("participation");
-    const file = form.get("payment");
+    // const file = form.get("payment");
 
     // Validate file is uploaded
-    if (!file || file.size === 0) {
-      setFileError("Payment proof is required");
-      setLoading(false);
-      showNotification("error", "Payment proof is required");
-      return;
-    }
+    // if (!file || file.size === 0) {
+    //   setFileError("Payment proof is required");
+    //   setLoading(false);
+    //   showNotification("error", "Payment proof is required");
+    //   return;
+    // }
 
     // Validate file size (5MB max)
-    if (file.size > 5 * 1024 * 1024) {
-      setFileError("File size must be less than 5MB");
-      setLoading(false);
-      showNotification("error", "File size must be less than 5MB");
-      return;
-    }
+    // if (file.size > 5 * 1024 * 1024) {
+    //   setFileError("File size must be less than 5MB");
+    //   setLoading(false);
+    //   showNotification("error", "File size must be less than 5MB");
+    //   return;
+    // }
 
-    let payment_proof_url = null;
+    // let payment_proof_url = null;
     
     try {
       // Upload payment proof
-      const key = `${Date.now()}-${file.name}`;
-      const { data, error } = await supabase.storage.from("payment_proofs").upload(key, file);
-      if (error) { 
-        throw new Error("Payment proof upload failed");
-      }
-      payment_proof_url = supabase.storage.from("payment_proofs").getPublicUrl(key).data.publicUrl;
+      // const key = `${Date.now()}-${file.name}`;
+      // const { data, error } = await supabase.storage.from("payment_proofs").upload(key, file);
+      // if (error) { 
+      //   throw new Error("Payment proof upload failed");
+      // }
+      // payment_proof_url = supabase.storage.from("payment_proofs").getPublicUrl(key).data.publicUrl;
 
       const { error: insertError } = await supabase.from("registrations").insert({
         title: form.get("title"),
@@ -81,7 +81,7 @@ export default function Register() {
         designation: form.get("designation"),
         participation,
         whatsapp_link: WHATSAPP_GROUP_LINK,
-        payment_proof_url,
+        // payment_proof_url,
       });
 
       if (insertError) throw new Error("Database insertion failed");
@@ -98,6 +98,8 @@ export default function Register() {
     }
   }
 
+  // Comment out file change handler since we're not using file upload for now
+  /*
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setFileError("");
@@ -125,6 +127,7 @@ export default function Register() {
       setFileName("");
     }
   };
+  */
 
   return (
     <section className="container mx-auto px-4 py-16 max-w-4xl relative">
@@ -312,7 +315,8 @@ export default function Register() {
           </div>
         </div>
 
-        {/* Payment - Mandatory */}
+        {/* Payment Section - Commented Out */}
+        {/*
         <div className="mb-6">
           <label className="block text-sm font-medium text-slate-700 mb-2">
             Upload Payment Proof *
@@ -355,6 +359,7 @@ export default function Register() {
             </p>
           )}
         </div>
+        */}
 
         {/* Submit Button */}
         <button 
