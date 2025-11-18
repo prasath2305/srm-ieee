@@ -22,7 +22,7 @@ export default function Navbar() {
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/schedule", label: "Schedule" },
-    { href: "/admin", label: "Admin" }
+    // { href: "/admin", label: "Admin" }
   ];
 
   return (
@@ -57,8 +57,8 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* Desktop Navigation - Centered */}
-          <div className="hidden md:flex flex-grow justify-center">
+          {/* Desktop Navigation - Truly Centered */}
+          <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2">
             <div className="flex items-center gap-6 lg:gap-8 text-sm">
               {navigationItems.map((item) => (
                 <Link
