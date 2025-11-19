@@ -15,7 +15,7 @@ const PARTICIPATION = [
 ];
 
 // Actual WhatsApp group link - replace with your actual link
-const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/EpyDduaiemF85mp8qAyKaV?mode=wwt";
+const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/your-actual-group-link";
 
 export default function Register() {
   const [loading, setLoading] = useState(false);
@@ -43,34 +43,34 @@ export default function Register() {
 
     const form = new FormData(e.currentTarget);
     const participation = form.getAll("participation");
-    // const file = form.get("payment");
+    const file = form.get("payment");
 
     // Validate file is uploaded
-    // if (!file || file.size === 0) {
-    //   setFileError("Payment proof is required");
-    //   setLoading(false);
-    //   showNotification("error", "Payment proof is required");
-    //   return;
-    // }
+    if (!file || file.size === 0) {
+      setFileError("Payment proof is required");
+      setLoading(false);
+      showNotification("error", "Payment proof is required");
+      return;
+    }
 
     // Validate file size (5MB max)
-    // if (file.size > 5 * 1024 * 1024) {
-    //   setFileError("File size must be less than 5MB");
-    //   setLoading(false);
-    //   showNotification("error", "File size must be less than 5MB");
-    //   return;
-    // }
+    if (file.size > 5 * 1024 * 1024) {
+      setFileError("File size must be less than 5MB");
+      setLoading(false);
+      showNotification("error", "File size must be less than 5MB");
+      return;
+    }
 
-    // let payment_proof_url = null;
+    let payment_proof_url = null;
     
     try {
       // Upload payment proof
-      // const key = `${Date.now()}-${file.name}`;
-      // const { data, error } = await supabase.storage.from("payment_proofs").upload(key, file);
-      // if (error) { 
-      //   throw new Error("Payment proof upload failed");
-      // }
-      // payment_proof_url = supabase.storage.from("payment_proofs").getPublicUrl(key).data.publicUrl;
+      const key = `${Date.now()}-${file.name}`;
+      const { data, error } = await supabase.storage.from("payment_proofs").upload(key, file);
+      if (error) { 
+        throw new Error("Payment proof upload failed");
+      }
+      payment_proof_url = supabase.storage.from("payment_proofs").getPublicUrl(key).data.publicUrl;
 
       const { error: insertError } = await supabase.from("registrations").insert({
         title: form.get("title"),
@@ -80,8 +80,9 @@ export default function Register() {
         institution: form.get("institution"),
         designation: form.get("designation"),
         participation,
+        hostel_accommodation: form.get("hostel") === "yes",
         whatsapp_link: WHATSAPP_GROUP_LINK,
-        // payment_proof_url,
+        payment_proof_url,
       });
 
       if (insertError) throw new Error("Database insertion failed");
@@ -98,8 +99,6 @@ export default function Register() {
     }
   }
 
-  // Comment out file change handler since we're not using file upload for now
-  /*
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setFileError("");
@@ -127,7 +126,6 @@ export default function Register() {
       setFileName("");
     }
   };
-  */
 
   return (
     <section className="container mx-auto px-4 py-16 max-w-4xl relative">
@@ -291,6 +289,74 @@ export default function Register() {
           </div>
         </div>
 
+        {/* Hostel Accommodation */}
+        <div className="mb-6">
+          <label className="block text-sm font-medium text-slate-700 mb-3">Do you need hostel accommodation? *</label>
+          <div className="flex gap-6">
+            <label className="flex items-center gap-3 p-4 rounded-xl border border-slate-300/50 bg-white/50 hover:bg-white/70 transition-all duration-200 cursor-pointer group flex-1">
+              <input 
+                type="radio" 
+                name="hostel" 
+                value="yes" 
+                required
+                className="w-4 h-4 text-blue-600 focus:ring-blue-500"
+              />
+              <span className="text-slate-700 group-hover:text-slate-900 transition-colors">Yes</span>
+            </label>
+            <label className="flex items-center gap-3 p-4 rounded-xl border border-slate-300/50 bg-white/50 hover:bg-white/70 transition-all duration-200 cursor-pointer group flex-1">
+              <input 
+                type="radio" 
+                name="hostel" 
+                value="no" 
+                required
+                className="w-4 h-4 text-blue-600 focus:ring-blue-500"
+              />
+              <span className="text-slate-700 group-hover:text-slate-900 transition-colors">No</span>
+            </label>
+          </div>
+        </div>
+
+        {/* Payment Details */}
+        <div className="mb-6">
+          <div className="bg-blue-50/50 border border-blue-200/50 rounded-xl p-6">
+            <h3 className="text-lg font-semibold text-blue-900 mb-4 flex items-center gap-2">
+              <CheckCircle className="w-5 h-5 text-blue-600" />
+              Payment Details
+            </h3>
+            <div className="grid md:grid-cols-2 gap-4 text-sm">
+              <div className="space-y-3">
+                <div>
+                  <span className="font-medium text-blue-800">BENEFICIARY NAME:</span>
+                  <p className="text-blue-700 mt-1">SRMIST - FSHKTR EVENTS</p>
+                </div>
+                <div>
+                  <span className="font-medium text-blue-800">BANK NAME BRANCH:</span>
+                  <p className="text-blue-700 mt-1">TAMBARAM</p>
+                </div>
+                <div>
+                  <span className="font-medium text-blue-800">ACCOUNT NO:</span>
+                  <p className="text-blue-700 mt-1">500101013732378</p>
+                </div>
+              </div>
+              <div className="space-y-3">
+                <div>
+                  <span className="font-medium text-blue-800">IFSC CODE:</span>
+                  <p className="text-blue-700 mt-1">CIUB0000117</p>
+                </div>
+                <div>
+                  <span className="font-medium text-blue-800">BANK NAME:</span>
+                  <p className="text-blue-700 mt-1">City Union Bank</p>
+                </div>
+              </div>
+            </div>
+            <div className="mt-4 p-3 bg-blue-100/50 rounded-lg border border-blue-200">
+              <p className="text-sm text-blue-800 font-medium">
+                💡 Please complete the payment using the above details and upload the proof below.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* WhatsApp Group Info */}
         <div className="mb-6">
           <div className="bg-green-50/50 border border-green-200/50 rounded-xl p-4">
@@ -315,8 +381,7 @@ export default function Register() {
           </div>
         </div>
 
-        {/* Payment Section - Commented Out */}
-        {/*
+        {/* Payment Proof Upload */}
         <div className="mb-6">
           <label className="block text-sm font-medium text-slate-700 mb-2">
             Upload Payment Proof *
@@ -359,7 +424,6 @@ export default function Register() {
             </p>
           )}
         </div>
-        */}
 
         {/* Submit Button */}
         <button 
