@@ -91,7 +91,7 @@ export default function Footer() {
                     href="mailto:summit2025@srmist.edu.in" 
                     className="text-slate-600 text-sm hover:text-blue-600 transition-colors"
                   >
-                    summit2025@srmist.edu.in
+                    srm.ieee.researchsummit25@gmail.com
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
