@@ -127,7 +127,7 @@ export default function DomeGallery({
   grayscale = true,
   // NEW: Auto-rotation props
   autoRotate = true,
-  autoRotateSpeed = 0.3,
+  autoRotateSpeed = 0.1,
   pauseOnHover = true
 }) {
   const rootRef = useRef(null);
