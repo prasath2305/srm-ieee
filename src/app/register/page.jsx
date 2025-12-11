@@ -15,7 +15,7 @@ const PARTICIPATION = [
 ];
 
 // Actual WhatsApp group link - replace with your actual link
-const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/your-actual-group-link";
+const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/EpyDduaiemF85mp8qAyKaV?mode=wwt";
 
 export default function Register() {
   const [loading, setLoading] = useState(false);
